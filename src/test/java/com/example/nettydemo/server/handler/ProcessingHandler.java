@@ -15,11 +15,11 @@ public class ProcessingHandler extends ChannelInboundHandlerAdapter {
 
         RequestData requestData = (RequestData) msg;
         ResponseData responseData = new ResponseData();
-        System.out.println(requestData.getStringValue());
-        //System.out.println(requestData.getIntValue());
         responseData.setIntValue(requestData.getIntValue() * 2);
         ChannelFuture future = ctx.writeAndFlush(responseData);
         future.addListener(ChannelFutureListener.CLOSE);
         System.out.println(requestData);
+        System.out.println(requestData.getIntValue());
+        System.out.println(requestData.getStringValue());
     }
 }

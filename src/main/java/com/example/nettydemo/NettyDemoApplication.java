@@ -3,6 +3,7 @@ package com.example.nettydemo;
 import com.example.nettydemo.client.decoder.ResponseDataDecoder;
 import com.example.nettydemo.client.encoder.RequestDataEncoder;
 import com.example.nettydemo.client.handler.ClientHandler;
+import com.example.nettydemo.model.RequestData;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -30,14 +31,12 @@ public class NettyDemoApplication {
 
     @EventListener(ApplicationReadyEvent.class)
     public void doSomethingAfterStartup() throws InterruptedException {
-        System.out.println("hello world, I have just started up");
         TCPClient tcpClient = new TCPClient();
-        tcpClient.run();
+        tcpClient.init();
+        var data = new RequestData();
+        data.setIntValue(100);
 
-        tcpClient.sendMessage("hello");
 
 
     }
-
-
 }

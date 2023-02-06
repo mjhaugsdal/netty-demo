@@ -16,8 +16,8 @@ public class RequestDataEncoder
     protected void encode(ChannelHandlerContext ctx,
                           RequestData msg, ByteBuf out) throws Exception {
 
-        //out.writeInt(msg.getIntValue());
-        //out.writeInt(msg.getStringValue().length());
+        out.writeInt(msg.getIntValue());
+        out.writeInt(msg.getStringValue().length());
         out.writeCharSequence(msg.getStringValue(), charset);
     }
 }
